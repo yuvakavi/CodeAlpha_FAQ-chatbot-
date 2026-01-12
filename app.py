@@ -262,6 +262,8 @@ bot = load_chatbot()
 # Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "input_value" not in st.session_state:
+    st.session_state.input_value = ""
 
 # Main heading
 st.markdown("""
@@ -275,6 +277,7 @@ with st.sidebar:
     
     if st.button("➕ New Chat", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.input_value = ""
         st.rerun()
     
     st.divider()
@@ -323,13 +326,17 @@ else:
 # Input area - Fixed at bottom
 st.divider()
 
+# Initialize input counter for clearing
+if "input_counter" not in st.session_state:
+    st.session_state.input_counter = 0
+
 col1, col2, col3 = st.columns([8, 1, 1])
 
 with col1:
     user_input = st.text_input(
         "Message",
         placeholder="Ask anything...",
-        key="user_input",
+        key=f"user_input_{st.session_state.input_counter}",
         label_visibility="collapsed"
     )
 
@@ -339,6 +346,7 @@ with col2:
 with col3:
     if st.button("Clear", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.input_counter += 1
         st.rerun()
 
 # Process input
@@ -361,6 +369,8 @@ if send_button and user_input and user_input.strip():
         "confidence": confidence
     })
     
+    # Clear the input field by incrementing counter
+    st.session_state.input_counter += 1
     st.rerun()
 
 # Example questions (only show when no messages)
