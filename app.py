@@ -10,18 +10,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Light green theme CSS
+# Default theme CSS
 st.markdown("""
 <style>
-    /* Light green theme */
+    /* Default theme */
     .stApp {
-        background-color: rgba(220, 255, 220, 0.3);
+        background-color: #ffffff;
         color: #1a1a1a;
     }
     
     /* Sidebar styling */
     [data-testid="stSidebar"] {
-        background-color: rgba(200, 250, 200, 0.5);
+        background-color: #f0f2f6;
         padding: 1rem;
     }
     
@@ -46,7 +46,7 @@ st.markdown("""
     /* Main chat area */
     .main .block-container {
         max-width: 900px;
-        padding-top: 3rem;
+        padding-top: 1rem;
         padding-bottom: 5rem;
     }
     
@@ -234,18 +234,19 @@ st.markdown("""
         text-align: center;
         font-size: 2.5rem;
         font-weight: 700;
-        color: #16a34a;
-        margin-bottom: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
         padding: 1rem 0;
         text-transform: uppercase;
         letter-spacing: 2px;
+        background: none;
     }
     
     .main-subtitle {
         text-align: center;
         font-size: 1rem;
-        color: #4a5568;
-        font-weight: 500;
+        color: #1a1a1a;
+        font-weight: 600;
         margin-bottom: 2rem;
     }
 </style>
